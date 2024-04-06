@@ -1,10 +1,9 @@
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 import pygame
-from ...serializable.abstract_serializable import AbstractSerializable
 from ... import AbstractSolution
 
 
-class AbstractQuestion(AbstractSerializable):
+class AbstractQuestion(ABC):
     def __init__(self, question: str, solution: AbstractSolution):
         self.__question = question
         self.__solution = solution
@@ -19,12 +18,6 @@ class AbstractQuestion(AbstractSerializable):
     def draw(self, game: pygame):
         '''
         Given a pygame instance, represent the question on the canvas.
-        '''
-
-    @abstractmethod
-    def serialize(self) -> bytes:
-        '''
-        Convert instance to bytecode.
         '''
 
     def get_question(self):
